@@ -14,7 +14,6 @@ public class WinnerFragment extends Fragment {
 private FragmentWinnerBinding binding;
 
 public WinnerFragment() {
-        // Required empty public constructor
     }
 
 
