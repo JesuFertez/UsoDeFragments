@@ -1,21 +1,20 @@
 package com.example.usodefragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.usodefragments.databinding.FragmentTriviaBinding;
 import com.squareup.picasso.Picasso;
 
 
 public class TriviaFragment extends Fragment {
+
     public static final String NAME_PARAM = "name";
     private FragmentTriviaBinding binding;
 
@@ -30,7 +29,7 @@ public class TriviaFragment extends Fragment {
         initBinding(inflater, container);
         obtainNameParam();
         cargarImagenWhatsapp();
-       // loadFragmentAnswer();
+        loadFragmentAnswer();
 
         return binding.getRoot();
     }
@@ -41,8 +40,7 @@ public class TriviaFragment extends Fragment {
     }
 
     private void obtainNameParam() {
-        String name = getArguments().getString(NAME_PARAM);
-        Toast.makeText(getContext(), name, Toast.LENGTH_SHORT).show();
+         String name = getArguments().getString(NAME_PARAM);
         binding.tvSaludoUser.setText("Hola, " + name + "!");
     }
 
@@ -52,18 +50,23 @@ public class TriviaFragment extends Fragment {
 
     private void loadFragmentAnswer() {
 
-        if (binding.rdBWhatsapp.isChecked()) {
-            goToWinnerFragment();
-        } else {
-            goToLoserFragment();
-        }
+        binding.btnSend.setOnClickListener(View ->
+        {
+            if (binding.rdBWhatsapp.isChecked()) {
+                goToWinnerFragment();
+            } else {
+                goToLoserFragment();
+            }
+
+        });
     }
 
-   private void goToWinnerFragment() {
-       Navigation.findNavController(binding.getRoot()).navigate(R.id.action_triviaFragment_to_winnerFragment, null);
-   }
+    private void goToWinnerFragment() {
+        Navigation.findNavController(binding.getRoot()).navigate(R.id.action_triviaFragment_to_winnerFragment,null);
+    }
 
     private void goToLoserFragment() {
         Navigation.findNavController(binding.getRoot()).navigate(R.id.action_triviaFragment_to_loserFragment, null);
     }
+
 }

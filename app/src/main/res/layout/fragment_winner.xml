@@ -22,6 +22,7 @@
         app:layout_constraintVertical_bias="0.38" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_game_again_winner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/design_default_color_primary"
