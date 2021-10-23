@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -45,6 +44,7 @@ public class TriviaFragment extends Fragment {
     }
 
     private void cargarImagenWhatsapp() {
+
         Picasso.get().load("https://1000marcas.net/wp-content/uploads/2019/11/WhatsApp-logo.png").into(binding.ivImagenWhatsapp);
     }
 
@@ -62,11 +62,19 @@ public class TriviaFragment extends Fragment {
     }
 
     private void goToWinnerFragment() {
-        Navigation.findNavController(binding.getRoot()).navigate(R.id.action_triviaFragment_to_winnerFragment,null);
+        Navigation.findNavController(binding.getRoot()).navigate(R.id.action_triviaFragment_to_winnerFragment,getArgs());
     }
 
     private void goToLoserFragment() {
-        Navigation.findNavController(binding.getRoot()).navigate(R.id.action_triviaFragment_to_loserFragment, null);
+        Navigation.findNavController(binding.getRoot()).navigate(R.id.action_triviaFragment_to_loserFragment, getArgs());
+
     }
+
+    private Bundle getArgs(){
+        Bundle bundle = new Bundle ();
+        bundle.putString(NAME_PARAM,getArguments().getString(NAME_PARAM));
+        return bundle;
+    }
+
 
 }

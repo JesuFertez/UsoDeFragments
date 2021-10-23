@@ -34,6 +34,7 @@ public class LoserFragment extends Fragment {
     }
 
     private void showMessageUsuer() {
+        binding.tvYouLoseMessage.setText("Perdiste "+ getArguments().get(TriviaFragment.NAME_PARAM)+ " !");
 
     }
 
